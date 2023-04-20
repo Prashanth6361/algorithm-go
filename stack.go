@@ -22,6 +22,9 @@ func (s *Stack) Pop() string {
 
 func (s *Stack) Peek() string {
 	n := len(s.words)
+	if n == 0 {
+		return "Empty data"
+	}
 	temp := s.words[n-1]
 	return temp
 }

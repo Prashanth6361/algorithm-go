@@ -16,11 +16,11 @@ func New(size int) *Queue {
 
 func (a *Queue) Enqueue(v interface{}) error {
 	l := a.Length()
-	if l < a.size {
-		a.value = append(a.value, v)
-		return nil
+	if l == a.size {
+		return errors.New("Full queue")
 	}
-	return errors.New("Full queue")
+	a.value = append(a.value, v)
+	return nil
 }
 
 func (a *Queue) Dequeue() (interface{}, error) {

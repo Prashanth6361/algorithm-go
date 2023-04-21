@@ -16,11 +16,11 @@ func New(size int) *Stack {
 
 func (s *Stack) Push(v interface{}) error {
 	l := len(s.value)
-	if l < s.size {
-		s.value = append(s.value, v)
-		return nil
+	if l == s.size {
+		return errors.New("Full stack")
 	}
-	return errors.New("Full stack")
+	s.value = append(s.value, v)
+	return nil
 }
 
 func (s *Stack) Pop() (interface{}, error) {
